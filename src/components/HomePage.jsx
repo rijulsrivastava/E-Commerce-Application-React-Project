@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../utils/useFetch'
+import ProductItem from './ProductItem'
 
 function HomePage() {
 
@@ -11,7 +12,7 @@ function HomePage() {
     return <p>Loading Error:{error}</p>
   }
 
-  if (loading){
+  if (loading) {
     return <p >Page is loading...</p>
   }
 
@@ -23,14 +24,13 @@ function HomePage() {
       </div>
       <div>
         <h2 className='text-2xl font-bold'>Products</h2>
-        {allProducts.map((product) => {
-          return (
-            <div>
-              <h3>{product.title}</h3>
-              <h3>{product.category}</h3>
-            </div>
-          )
-        })}
+        <div>
+          <ProductItem product={allProducts[19]}/>
+          <ProductItem product={allProducts[1]}/>
+          <ProductItem product={allProducts[24]}/>
+          <ProductItem product={allProducts[6]}/>
+          <ProductItem product={allProducts[28]}/>
+        </div>
       </div>
       <div>
         <h2 className='text-2xl font-bold'>Choose category</h2>
