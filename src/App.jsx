@@ -1,12 +1,12 @@
 import React from 'react'
 import Header from './components/Header'
-import useFetch from './utils/useFetch'
+import HomePage from './components/HomePage'
 
 function App() {
-  const d = useFetch()
   return (
     <div>
       <Header/>
+      <HomePage/>
     </div>
   )
 }

@@ -5,23 +5,26 @@ function useFetch() {
 
     const [allProducts, setAllProducts] = useState([])
     const [error,setError] = useState()
+    const [loading,setLoading] = useState(true)
 
     useEffect(() => {
         async function calling() {
             try {
                 const API = 'https://dummyjson.com/products'
                 const data = await axios.get(API)
-                console.log(data.data.products)
+                // console.log(data.data.products)
                 setAllProducts(data.data.products)
             }
             catch(err){
-                console.log(err)
-                setError(err)
+                console.log(err.message)
+                setError(err.message)
+            }finally{
+                setLoading(false)
             }
         }
         calling()
     }, [])
-    return {allProducts, error}
+    return {allProducts, error, loading}
 }
 
 export default useFetch
