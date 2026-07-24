@@ -3,6 +3,7 @@ import useFetch from '../utils/useFetch'
 // import ProductItem from './ProductItem'
 import ProductList from './ProductList'
 import ProductDetails from './ProductDetails'
+import CartItem from './CartItem'
 
 function HomePage() {
 
@@ -28,7 +29,8 @@ function HomePage() {
         <h2 className='text-2xl font-bold'>Products</h2>
         <div>
           {/* <ProductList allProducts={allProducts}/> */}
-          <ProductDetails product={allProducts[7]}/>
+          {/* <ProductDetails product={allProducts[7]}/> */}
+          <CartItem item={allProducts[29]}/>
         </div>
       </div>
       <div>
