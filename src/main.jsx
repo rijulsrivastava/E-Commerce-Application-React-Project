@@ -4,10 +4,12 @@ import App from './App.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HomePage from './components/HomePage.jsx'
 import Cart from './components/Cart.jsx'
+import NotFound from './components/NotFound.jsx'
 
 const appProvider = createBrowserRouter([{
   path:'/',
   element:<App/>,
+  errorElement:<NotFound/>,
   children:[
     {
       path:'/',
