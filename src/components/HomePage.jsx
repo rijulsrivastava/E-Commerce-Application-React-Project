@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useFetch from '../utils/useFetch'
 // import ProductItem from './ProductItem'
 import ProductList from './ProductList'
+import ProductDetails from './ProductDetails'
 
 function HomePage() {
 
@@ -26,7 +27,8 @@ function HomePage() {
       <div>
         <h2 className='text-2xl font-bold'>Products</h2>
         <div>
-          <ProductList allProducts={allProducts}/>
+          {/* <ProductList allProducts={allProducts}/> */}
+          <ProductDetails product={allProducts[7]}/>
         </div>
       </div>
       <div>
