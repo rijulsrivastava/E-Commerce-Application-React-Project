@@ -25,12 +25,6 @@ function Header() {
                         </div>
                     </Link>
 
-                    <Link to={'/search'}>
-                        <div className='flex items-center gap-1'>
-                            <IoSearchSharp />
-                            <li>Search</li>
-                        </div>
-                    </Link>
                     <Link to={'/cart'}>
                         <div className='flex items-center gap-1'>
                             <IoCartOutline />
