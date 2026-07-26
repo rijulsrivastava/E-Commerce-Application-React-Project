@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function ProductList({ allProducts }) {
 
@@ -23,7 +24,9 @@ function ProductList({ allProducts }) {
     <div className='flex flex-wrap justify-center items-center gap-6 py-4'>
       {filteredProducts.map((product) => {
         return (
-          <ProductItem product={product} />
+          <Link to={`/productDetails/${product.id}`}>
+            <ProductItem product={product} />
+          </Link>
         )
       })}
     </div>
