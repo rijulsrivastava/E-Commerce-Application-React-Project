@@ -2,6 +2,7 @@ import React from 'react'
 import CartItem from './CartItem'
 import { FaArrowRightFromBracket } from "react-icons/fa6"
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Cart() {
 
@@ -24,7 +25,9 @@ function Cart() {
               <h2 >Grand Total:</h2>
               <h2>Amount</h2>
             </div>
-            < button className='flex gap-1 mt-4 items-center border p-6 py-2 justify-center font-bold'>Palce order <FaArrowRightFromBracket /> </button>
+            <Link to={'/checkOut'}>
+              < button className='flex gap-1 mt-4 items-center border p-6 py-2 justify-center font-bold'>Proceed to Buy <FaArrowRightFromBracket /> </button>
+            </Link>
           </div>
         </div > :
         <div className='flex flex-col gap-2 justify-center items-center m-10'>

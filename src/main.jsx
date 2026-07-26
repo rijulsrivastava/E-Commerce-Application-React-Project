@@ -6,6 +6,7 @@ import HomePage from './components/HomePage.jsx'
 import Cart from './components/Cart.jsx'
 import NotFound from './components/NotFound.jsx'
 import ProductDetails from './components/ProductDetails.jsx'
+import CheckOut from './components/CheackOut.jsx'
 
 const appProvider = createBrowserRouter([{
   path: '/',
@@ -23,6 +24,10 @@ const appProvider = createBrowserRouter([{
     {
       path: '/productDetails/:id',
       element: <ProductDetails />
+    },
+    {
+      path: '/checkOut',
+      element: <CheckOut />
     }
   ]
 }])
