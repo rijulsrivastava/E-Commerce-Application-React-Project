@@ -1,7 +1,15 @@
 import React from "react";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
+import { useDispatch } from 'react-redux'
+import { removeItem } from "../utils/cartSlice";
 
 function CartItem({ item }) {
+
+  const dispatch = useDispatch()
+
+  function handleRemove() {
+    dispatch(removeItem())
+  }
 
   return (
     <div className="flex justify-between items-center px-4">
@@ -23,7 +31,7 @@ function CartItem({ item }) {
 
         <p className="font-bold text-lg">${item.price}</p>
 
-        <button type="button">Remove</button>
+        <button type="button" onClick={handleRemove}>Remove</button>
       </div>
     </div>
   );
