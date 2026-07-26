@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../utils/cartSlice";
 
 function CheckOut() {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const items = useSelector((state) => state.cart.items);
 
   const [userInfo, setUserInfo] = useState({
@@ -23,7 +26,11 @@ function CheckOut() {
   const [ordered, setOrdered] = useState(false)
 
   function handlePlaceOrder() {
+    dispatch(clearCart())
     setOrdered(true)
+    setTimeout(() => {
+      navigate('/')
+    }, 2000)
   }
 
   if (ordered == true) {
@@ -53,19 +60,21 @@ function CheckOut() {
           </form>
         </div>
         <div className="flex flex-col justify-between items-center w-[40%] border p-4">
-          <h2 className="text-2xl font-semibold mb-4">Order Summary </h2>
-          <ul>
-            {items.map((item) => (
-              <li key={item.id} className="py-4 w-[100%] border flex justify-between items-center">
-                <div>
-                  <h3 className="">{item.title}</h3>
-                </div>
-                <div className="text-lg">${item.price}</div>
-              </li>
-            ))
-            }
-          </ul>
-          <div className="text-right">
+          <div className="flex flex-col justify-center items-center w-full">
+            <h2 className="text-2xl font-semibold mb-4">Order Summary </h2>
+            <ul className="border w-full">
+              {items.map((item) => (
+                <li key={item.id} className="py-4 w-[100%] flex justify-between items-center">
+                  <div>
+                    <h3 className="">{item.title}</h3>
+                  </div>
+                  <div className="text-lg">${item.price}</div>
+                </li>
+              ))
+              }
+            </ul>
+          </div>
+          <div className="text-right justify-self-end">
             <button onClick={handlePlaceOrder} className="px-4 py-1 hover:scale-105 border text-lg">Place Order</button>
           </div>
         </div>
