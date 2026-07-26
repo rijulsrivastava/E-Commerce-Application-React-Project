@@ -1,37 +1,39 @@
 import React from 'react'
 import CartItem from './CartItem'
 import { FaArrowRightFromBracket } from "react-icons/fa6"
+import { useSelector } from 'react-redux'
 
-function Cart({ items }) {
-  console.log(items)
-  const itemList = items.slice(0, 10)
-  console.log(itemList)
+function Cart() {
+
+  const items = useSelector((store) => store.cart.items)
+
   return (
-    <>
-      {(itemList.length > 0) ?
-        <div>
-          <h2 className='font-bold text-2xl mb-4'>Shopping Cart</h2>
-          {itemList.map((item) => {
+    <div className='flex justify-center'>
+      {(items.length > 0) ?
+        <div className='flex flex-col justify-center items-center w-[1000px]'>
+          <h2 className='font-bold text-2xl my-6'>Shopping Cart</h2>
+          {items.map((item) => {
             return (
-              <div key={item.id} className='flex flex-col mb-4'>
+              <div key={item.id} className='flex flex-col border border-dashed  w-full mb-4'>
                 < CartItem key={item.id} item={item} />
               </div>
             )
           })}
-          <div className='flex flex-col items-center justify-center'>
-            <div >
+          <div className='flex flex-col items-center justify-center w-full'>
+            <div className='flex justify-around w-full border font-bold text-lg p-2'>
               <h2 >Grand Total:</h2>
+              <h2>Amount</h2>
             </div>
-            < button className='flex gap-1 mt-4 items-center border p-2 py-1 justify-center font-bold'>Palce order <FaArrowRightFromBracket /> </button>
+            < button className='flex gap-1 mt-4 items-center border p-6 py-2 justify-center font-bold'>Palce order <FaArrowRightFromBracket /> </button>
           </div>
         </div > :
         <div className='flex flex-col gap-2 justify-center items-center m-10'>
           <h2 className='font-bold text-4xl'>Nothing in the cart</h2>
           <p>Add items to proceed</p>
-          <button className='flex gap-1 mt-4 items-center justify-center font-bold'>Continue to Add Item <FaArrowRightFromBracket /> </button>
+          <button className='flex gap-1 mt-4 items-center justify-center font-bold border p-2'>Continue to Add Item <FaArrowRightFromBracket /> </button>
         </div>
       }
-    </>
+    </div>
   )
 }
 

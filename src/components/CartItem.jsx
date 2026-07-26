@@ -4,8 +4,8 @@ import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 function CartItem({ item }) {
 
   return (
-    <div className="flex justify-between items-center border px-4">
-      <div className="w-[150px] h-[150px]">
+    <div className="flex justify-between items-center px-4">
+      <div className="w-[120px] h-[120px]">
         <img src={item.thumbnail} alt={item.title} />
       </div>
 
@@ -14,15 +14,17 @@ function CartItem({ item }) {
         <p>({item.shippingInformation})</p>
       </div>
 
-      <div className="flex gap-1 items-center">
-        <button type="button" className="flex items-center text-2xl"> <CiCircleMinus/> </button>
-        <span className="">"Quantity"</span>
-        <button type="button" className="flex items-center text-2xl"> <CiCirclePlus/> </button>
+      <div className="flex gap-8 items-center">
+        <div className="flex gap-1 items-center">
+          <button type="button" className="flex items-center text-2xl"> <CiCircleMinus /> </button>
+          <span className="">"Quantity"</span>
+          <button type="button" className="flex items-center text-2xl"> <CiCirclePlus /> </button>
+        </div>
+
+        <p className="font-bold text-lg">${item.price}</p>
+
+        <button type="button">Remove</button>
       </div>
-
-      <p className="font-bold text-lg">${item.price}</p>
-
-      <button type="button">Remove</button>
     </div>
   );
 };

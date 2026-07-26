@@ -3,6 +3,8 @@ import { FaStar } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import useFetch from '../utils/useFetch'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../utils/cartSlice'
 
 function ProductDetails() {
 
@@ -41,6 +43,13 @@ function ProductDetails() {
     return <h2 className="text-center text-2xl mt-10">No Matching Product</h2>;
   }
 
+  const dispatch = useDispatch()
+
+  function handleAddToCart() {
+    console.log('added')
+    dispatch(addItem(product))
+  }
+
 
   return (
     <div className='flex justify-center mt-15'>
@@ -71,7 +80,7 @@ function ProductDetails() {
 
           </div>
           <div className='mb-7 text-center'>
-            <button>Add to Cart</button>
+            <button onClick={handleAddToCart}>Add to Cart</button>
           </div>
         </div>
       </div>

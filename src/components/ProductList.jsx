@@ -24,9 +24,7 @@ function ProductList({ allProducts }) {
     <div className='flex flex-wrap justify-center items-center gap-6 py-4'>
       {filteredProducts.map((product) => {
         return (
-          <Link to={`/productDetails/${product.id}`}>
-            <ProductItem product={product} />
-          </Link>
+          <ProductItem product={product} />
         )
       })}
     </div>
