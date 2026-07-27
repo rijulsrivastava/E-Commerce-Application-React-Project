@@ -1,5 +1,6 @@
 import React from 'react'
-import ProductItem from './ProductItem'
+import { lazy, Suspense } from 'react'
+const ProductItem = lazy(() => import('./ProductItem'))
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -21,13 +22,15 @@ function ProductList({ allProducts }) {
   }
 
   return (
-    <div className='flex flex-wrap justify-center items-center gap-6 py-4'>
-      {filteredProducts.map((product) => {
-        return (
-          <ProductItem product={product} />
-        )
-      })}
-    </div>
+    <Suspense key={product.id} fallback={<h2>Loading...</h2>}>
+      <div className='flex flex-wrap justify-center items-center gap-6 py-4'>
+        {filteredProducts.map((product) => {
+          return (
+            <ProductItem product={product} />
+          )
+        })}
+      </div>
+    </Suspense>
   )
 }
 

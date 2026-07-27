@@ -16,8 +16,8 @@ export const cartSlice = createSlice({
             }
             state.items.push({ ...action.payload, quantity: 1 })
         },
-        removeItem: (state) => {
-            state.items.pop()
+        removeItem: (state, action) => {
+            state.items = state.items.filter((item) => item.id != action.payload.id)
         },
         clearCart: (state) => {
             state.items.length = 0

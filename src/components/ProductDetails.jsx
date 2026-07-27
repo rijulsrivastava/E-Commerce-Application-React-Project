@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
-import useFetch from '../utils/useFetch'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../utils/cartSlice'
@@ -55,7 +54,7 @@ function ProductDetails() {
     <div className='flex justify-center mt-15'>
       <div className='flex justify-between border w-[900px] h-[500px] p-6 gap-2'>
         <div className='w-[40%] object-cover'>
-          <img src={product.thumbnail} className=' w-[100%] h-[100%]' alt="" />
+          <img src={product.thumbnail} loading='lazy' className=' w-[100%] h-[100%]' alt="" />
         </div>
         <div className=' flex flex-col justify-between w-[60%] p-2'>
           <div className='flex flex-col p-2 pt-0 gap-6'>

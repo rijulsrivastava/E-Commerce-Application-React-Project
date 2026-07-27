@@ -17,7 +17,7 @@ function Header() {
                         <h1>Shoppy</h1>
                         <h1>Globe</h1>
                     </div>
-                    <img src={logo} alt="ShoppyGlobeLogo" width={'50px'} height={'50px'} />
+                    <img src={logo} loading='lazy' alt="ShoppyGlobeLogo" width={'50px'} height={'50px'} />
                 </div>
             </Link>
             <nav className='flex justify-center'>
@@ -31,13 +31,13 @@ function Header() {
 
                     <Link to={'/cart'}>
                         <div className='flex items-center gap-1'>
-                            <IoCartOutline />
-                            {items.length ? <li>Cart({items.length})</li> : <li>Cart</li>}
+                            <IoCartOutline size={28} />
+                            {items.length ? <li className='flex justify-center items-center gap-0.5'>Cart <span className='rounded-full border px-1 text-xs font-bold'>{items.length}</span></li> : <li>Cart</li>}
                         </div>
                     </Link>
                 </ul>
             </nav>
-        </div>
+        </div >
     )
 }
 

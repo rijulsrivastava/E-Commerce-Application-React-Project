@@ -2,11 +2,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import HomePage from './components/HomePage.jsx'
-import Cart from './components/Cart.jsx'
-import NotFound from './components/NotFound.jsx'
-import ProductDetails from './components/ProductDetails.jsx'
-import CheckOut from './components/CheackOut.jsx'
+import { lazy, Suspense } from 'react'
+const HomePage = lazy(() => import('./components/HomePage.jsx'))
+const Cart = lazy(() => import('./components/Cart.jsx'))
+const NotFound = lazy(() => import('./components/NotFound.jsx'))
+const ProductDetails = lazy(() => import('./components/ProductDetails.jsx'))
+const CheckOut = lazy(() => import('./components/CheackOut.jsx'))
 
 const appProvider = createBrowserRouter([{
   path: '/',
@@ -15,19 +16,27 @@ const appProvider = createBrowserRouter([{
   children: [
     {
       path: '/',
-      element: <HomePage />,
+      element: <Suspense fallback={<h2>Loading...</h2>}>
+        <HomePage />
+      </Suspense>
     },
     {
       path: '/cart',
-      element: <Cart />
+      element: <Suspense fallback={<h2>Loading...</h2>}>
+        <Cart />
+      </Suspense>
     },
     {
       path: '/productDetails/:id',
-      element: <ProductDetails />
+      element: <Suspense fallback={<h2>Loading...</h2>}>
+        <ProductDetails />
+      </Suspense>
     },
     {
       path: '/checkOut',
-      element: <CheckOut />
+      element: <Suspense fallback={<h2>Loading...</h2>}>
+        <CheckOut />
+      </Suspense>
     }
   ]
 }])

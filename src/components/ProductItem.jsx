@@ -19,7 +19,7 @@ function ProductItem(props) {
     <div className='flex flex-col justify-between border w-[250px] h-fit'>
       <Link to={`/productDetails/${props.product.id}`}>
         <div className='relative'>
-          <img src={props.product.thumbnail} className=' w-[250px] h-[300px] self-center' alt="" />
+          <img src={props.product.thumbnail} loading='lazy' className=' w-[250px] h-[300px] self-center' alt="" />
           <h2 className='absolute bottom-2 left-2 flex justify-center items-center gap-1 font-bold text-md'>{props.product.rating} <FaStar /> ({props.product.reviews.length})</h2>
         </div>
         <div className='flex flex-col p-2 pt-0'>

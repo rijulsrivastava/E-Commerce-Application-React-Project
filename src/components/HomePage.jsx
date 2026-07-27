@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../utils/useFetch'
-import ProductList from './ProductList'
-import Search from './search'
+import { lazy, Suspense } from 'react'
+const ProductList = lazy(() => import('./ProductList'))
+const Search = lazy(() => import('./Search'))
 
 function HomePage() {
 
@@ -28,7 +29,9 @@ function HomePage() {
       <div>
         <h2 className='text-2xl font-bold'>Products</h2>
         <div>
-          <ProductList allProducts={allProducts} />
+          <Suspense fallback={<h2>Loading...</h2>}>
+            <ProductList allProducts={allProducts} />
+          </Suspense>
         </div>
       </div>
       <div>

@@ -8,7 +8,7 @@ function CartItem({ item }) {
   const dispatch = useDispatch()
 
   function handleRemove() {
-    dispatch(removeItem())
+    dispatch(removeItem(item))
   }
 
   function handlePlus() {
@@ -23,7 +23,7 @@ function CartItem({ item }) {
   return (
     <div className="flex justify-between items-center px-4">
       <div className="w-[120px] h-[120px]">
-        <img src={item.thumbnail} alt={item.title} />
+        <img src={item.thumbnail} loading="lazy" alt={item.title} />
       </div>
       <div className="flex justify-between  w-[800px]">
         <div className="flex flex-col justify-center">

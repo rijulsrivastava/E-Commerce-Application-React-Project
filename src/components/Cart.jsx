@@ -1,5 +1,6 @@
 import React from 'react'
-import CartItem from './CartItem'
+import { lazy, Suspense } from 'react'
+const CartItem = lazy(() => import('./CartItem'))
 import { FaArrowRightFromBracket } from "react-icons/fa6"
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -28,13 +29,15 @@ function Cart() {
       {(items.length > 0) ?
         <div className='flex flex-col justify-center items-center w-[1000px]'>
           <h2 className='font-bold text-2xl my-6'>Shopping Cart</h2>
-          {items.map((item) => {
-            return (
-              <div key={item.id} className='flex flex-col border border-dashed  w-full mb-4'>
-                < CartItem key={item.id} item={item} />
-              </div>
-            )
-          })}
+          <Suspense fallback={<h2>Loading...</h2>}>
+            {items.map((item) => {
+              return (
+                <div key={item.id} className='flex flex-col border border-dashed  w-full mb-4'>
+                  <CartItem item={item} />
+                </div>
+              )
+            })}
+          </Suspense>
           <div className='flex flex-col mt-5 items-center justify-center w-full'>
             <div className='flex justify-around w-full border border-dotted font-bold text-lg p-2'>
               <h2 >Grand Total:</h2>
