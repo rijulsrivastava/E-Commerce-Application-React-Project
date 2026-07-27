@@ -2,7 +2,7 @@ import React from 'react'
 import CartItem from './CartItem'
 import { FaArrowRightFromBracket } from "react-icons/fa6"
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { clearCart } from '../utils/cartSlice'
 
 function Cart() {
@@ -16,6 +16,12 @@ function Cart() {
   }
 
   const total = items.reduce((sum, acc) => sum = sum + acc.price * acc.quantity, 0)
+
+  const navigate = useNavigate()
+
+  function handleClick() {
+    navigate('/')
+  }
 
   return (
     <div className='flex justify-center'>
@@ -45,7 +51,7 @@ function Cart() {
         <div className='flex flex-col gap-2 justify-center items-center m-10'>
           <h2 className='font-bold text-4xl'>Nothing in the cart</h2>
           <p>Add items to proceed</p>
-          <button className='flex gap-1 mt-4 items-center justify-center font-bold border p-2'>Continue to Add Item <FaArrowRightFromBracket /> </button>
+          <button className='flex gap-1 mt-4 items-center justify-center font-bold border p-2' onClick={handleClick}>Continue to Add Item <FaArrowRightFromBracket /> </button>
         </div>
       }
     </div>

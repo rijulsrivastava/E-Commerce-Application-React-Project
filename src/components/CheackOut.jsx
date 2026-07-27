@@ -42,6 +42,8 @@ function CheckOut() {
     )
   }
 
+  const total = items.reduce((sum, acc) => sum = sum + acc.price * acc.quantity, 0)
+
   return (
     <div className="flex flex-col items-center w-full pt-10 gap-8">
       <h2 className="text-3xl font-bold">Checkout</h2>
@@ -66,13 +68,17 @@ function CheckOut() {
               {items.map((item) => (
                 <li key={item.id} className=" w-[100%] flex justify-between items-center">
                   <div>
-                    <h3 className="">{item.title}</h3>
+                    <h3 className="font-semibold">{item.title} x {item.quantity}</h3>
                   </div>
-                  <div className="text-lg">${item.price}</div>
+                  <div className="font-semibold">${item.price * item.quantity}</div>
                 </li>
               ))
               }
             </ul>
+            <div className='flex justify-between w-full font-semibold border-t-2 border-dotted mt-6 pt-1'>
+              <h2 >Grand Total:</h2>
+              <h2>${total.toFixed(2)}</h2>
+            </div>
           </div>
           <div className="text-right justify-self-end mt-6">
             <button onClick={handlePlaceOrder} className="px-4 py-1 hover:scale-105 border text-lg">Place Order</button>

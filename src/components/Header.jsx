@@ -3,8 +3,12 @@ import { IoCartOutline, IoSearchSharp } from "react-icons/io5";
 import { FaHome } from "react-icons/fa";
 import logo from '../assets/Logo.webp'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Header() {
+
+    const items = useSelector((store) => store.cart.items)
+
     return (
         <div className='flex justify-between px-6 py-2 border-b'>
             <Link to={'/'}>
@@ -28,7 +32,7 @@ function Header() {
                     <Link to={'/cart'}>
                         <div className='flex items-center gap-1'>
                             <IoCartOutline />
-                            <li>Cart</li>
+                            {items.length ? <li>Cart({items.length})</li> : <li>Cart</li>}
                         </div>
                     </Link>
                 </ul>
