@@ -51,8 +51,8 @@ function ProductDetails() {
 
 
   return (
-    <div className='flex justify-center mt-15'>
-      <div className='flex justify-between border w-[900px] h-[500px] p-6 gap-2'>
+    <div className='flex justify-center  mt-15'>
+      <div className='flex justify-between border bg-[#ECFDF5] w-[900px] h-[500px] p-6 gap-2'>
         <div className='w-[40%] object-cover'>
           <img src={product.thumbnail} loading='lazy' className=' w-[100%] h-[100%]' alt="" />
         </div>
@@ -79,7 +79,7 @@ function ProductDetails() {
 
           </div>
           <div className='mb-7 text-center'>
-            <button onClick={handleAddToCart}>Add to Cart</button>
+            <button onClick={handleAddToCart} className='bg-[#3e5c63] rounded-2xl px-6 border py-1 text-white hover:text-[#FF6202] hover:bg-transparent hover:scale-105'>Add to Cart</button>
           </div>
         </div>
       </div>

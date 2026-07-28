@@ -33,14 +33,14 @@ function CartItem({ item }) {
 
         <div className="flex w-[250px] justify-between items-center">
           <div className="flex gap-1 items-center">
-            <button type="button" className="flex items-center text-2xl" onClick={handleMinus}> <CiCircleMinus /> </button>
+            <button type="button" className="flex items-center text-2xl hover:scale-110" onClick={handleMinus}> <CiCircleMinus /> </button>
             <span className="font-bold">{item.quantity}</span>
-            <button type="button" className="flex items-center text-2xl" onClick={handlePlus}> <CiCirclePlus /> </button>
+            <button type="button" className="flex items-center text-2xl hover:scale-110" onClick={handlePlus}> <CiCirclePlus /> </button>
           </div>
 
           <p className="font-bold text-lg">${item.price * item.quantity}</p>
 
-          <button type="button" onClick={handleRemove}>Remove</button>
+          <button type="button" onClick={handleRemove} className="text-red-700 hover:scale-105">Remove</button>
         </div>
       </div>
     </div>

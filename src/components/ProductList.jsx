@@ -22,8 +22,8 @@ function ProductList({ allProducts }) {
   }
 
   return (
-    <Suspense key={product.id} fallback={<h2>Loading...</h2>}>
-      <div className='flex flex-wrap justify-center items-center gap-6 py-4'>
+    <Suspense fallback={<h2>Loading...</h2>}>
+      <div className='flex flex-wrap justify-center  items-center gap-6 py-4'>
         {filteredProducts.map((product) => {
           return (
             <ProductItem product={product} />

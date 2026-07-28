@@ -32,21 +32,21 @@ function Cart() {
           <Suspense fallback={<h2>Loading...</h2>}>
             {items.map((item) => {
               return (
-                <div key={item.id} className='flex flex-col border border-dashed  w-full mb-4'>
+                <div key={item.id} className='flex flex-col border shadow-xl border-dashed border-[#D4A373] w-full mb-4'>
                   <CartItem item={item} />
                 </div>
               )
             })}
           </Suspense>
           <div className='flex flex-col mt-5 items-center justify-center w-full'>
-            <div className='flex justify-around w-full border border-dotted font-bold text-lg p-2'>
+            <div className='flex justify-around w-full bg-[#D4E3DE] border-[#D4A373] border border-dotted font-bold text-lg p-2'>
               <h2 >Grand Total:</h2>
               <h2>${total.toFixed(2)}</h2>
             </div>
             <div className='flex justify-center gap-6 p-4  m-8 w-full items-center'>
-              <button className='border p-6 py-2  font-bold' onClick={handleClearCart}>Clear Cart</button>
+              <button className='border p-6 py-2 rounded-sm  text-[#3e5c63] hover:text-red-700 font-bold' onClick={handleClearCart}>Clear Cart</button>
               <Link to={'/checkOut'}>
-                < button className='flex gap-1  items-center border p-6 py-2 justify-center font-bold'>Proceed to Buy <FaArrowRightFromBracket /> </button>
+                < button className='flex gap-1  items-center border p-6 py-2 justify-center font-bold bg-[#D4E3DE] rounded-sm hover:text-[#FF6202]'>Proceed to Buy <FaArrowRightFromBracket /> </button>
               </Link>
             </div>
           </div>
@@ -54,7 +54,7 @@ function Cart() {
         <div className='flex flex-col gap-2 justify-center items-center m-10'>
           <h2 className='font-bold text-4xl'>Nothing in the cart</h2>
           <p>Add items to proceed</p>
-          <button className='flex gap-1 mt-4 items-center justify-center font-bold border p-2' onClick={handleClick}>Continue to Add Item <FaArrowRightFromBracket /> </button>
+          <button className='flex gap-1 mt-4 items-center justify-center font-bold border rounded-sm p-2 hover:scale-105 hover:text-[#FF6202]' onClick={handleClick}>Continue to Add Item <FaArrowRightFromBracket /> </button>
         </div>
       }
     </div>
