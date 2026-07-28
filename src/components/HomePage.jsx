@@ -21,19 +21,19 @@ function HomePage() {
   }
 
   return (
-    <div className='flex flex-col m-6'>
+    <div className='flex flex-col  py-6 px-4 sm:px-8 lg:px-12'>
 
-      <div className='flex flex-col'>
-        <h1 className='text-4xl font-bold mb-2'>ShoppyGlobe one place for everything</h1>
-        <h2 className='text-xl font-bold italic'>"Get highest quality producs at most affordable price"</h2>
+      <div className='flex flex-col text-center lg:text-left'>
+        <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-2'>ShoppyGlobe one place for everything</h1>
+        <h2 className='text-lg sm:text-xl font-bold italic'>"Get highest quality producs at most affordable price"</h2>
       </div>
       <Search />
       <div>
-        <h2 className='text-2xl font-bold'>Choose by category</h2>
-        <div className='flex gap-4 m-6'>
+        <h2 className='text-xl sm:text-2xl font-bold'>Choose by category</h2>
+        <div className='flex flex-wrap justify-center lg:justify-start gap-4 my-6'>
           {categories.map((category) => {
             return (
-              <button onClick={() => setChooseCategory(category)} className={`border px-4 py-1 rounded-lg font-bold transition-all duration-200 hover:scale-105 
+              <button key={category} onClick={() => setChooseCategory(category)} className={`border px-4 py-1 rounded-lg font-bold transition-all duration-200 hover:scale-105 
                 ${chooseCategory === category ?
                   "bg-[#FF6202] text-white border-[#FF6202]" :
                   "bg-[#ECFDF5] text-[#3E5C63] border-[#D4A373] hover:bg-[#FF6202] hover:text-white"
@@ -43,7 +43,7 @@ function HomePage() {
         </div>
       </div>
       <div>
-        <h2 className='text-2xl font-bold'>Products</h2>
+        <h2 className='text-xl sm:text-2xl font-bold'>Products</h2>
         <div>
           <Suspense fallback={<h2>Loading...</h2>}>
             <ProductList allProducts={allProducts} category={chooseCategory} />

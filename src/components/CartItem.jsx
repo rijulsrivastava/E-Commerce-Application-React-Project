@@ -21,25 +21,23 @@ function CartItem({ item }) {
 
 
   return (
-    <div className="flex justify-between items-center px-4">
-      <div className="w-[120px] h-[120px]">
-        <img src={item.thumbnail} loading="lazy" alt={item.title} />
+    <div className="flex flex-col lg:flex-row justify-between gap-5 items-center p-4">
+      <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] shrink-0">
+        <img src={item.thumbnail} loading="lazy" alt={item.title} className="w-full h-full object-cover" />
       </div>
-      <div className="flex justify-between  w-[800px]">
+      <div className="flex flex-col sm:flex-row justify-between items-center flex-1 gap-5 w-full">
         <div className="flex flex-col justify-center">
-          <h4 className="font-bold text-xl">{item.title}</h4>
-          <p>({item.shippingInformation})</p>
+          <h4 className="font-bold text-center sm:text-left text-lg sm:text-xl">{item.title}</h4>
+          <p className="text-center sm:text-left">({item.shippingInformation})</p>
         </div>
 
-        <div className="flex w-[250px] justify-between items-center">
+        <div className="flex w-full gap-4 sm:gap-8 sm:w-auto justify-between items-center">
           <div className="flex gap-1 items-center">
             <button type="button" className="flex items-center text-2xl hover:scale-110" onClick={handleMinus}> <CiCircleMinus /> </button>
             <span className="font-bold">{item.quantity}</span>
             <button type="button" className="flex items-center text-2xl hover:scale-110" onClick={handlePlus}> <CiCirclePlus /> </button>
           </div>
-
           <p className="font-bold text-lg">${item.price * item.quantity}</p>
-
           <button type="button" onClick={handleRemove} className="text-red-700 hover:scale-105">Remove</button>
         </div>
       </div>

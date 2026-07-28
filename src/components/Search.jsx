@@ -13,8 +13,8 @@ function Search() {
 
     return (
         <div>
-            <div className='flex gap-2 items-center justify-center m-10 '>
-                <input type="text" value={input} placeholder='Search for products' onChange={(e) => setInput(e.target.value)} className='border-[1.5px] rounded-4xl border-[#D4A373] w-[500px] text-center p-1 px-2 focus:border-[#FF6202] focus:outline-none ' />
+            <div className='flex gap-2 items-center justify-center my-6 px-2 sm:m-10 '>
+                <input type="text" value={input} placeholder='Search for products' onChange={(e) => setInput(e.target.value)} className='border-[1.5px] rounded-4xl border-[#D4A373] w-full sm:w-[400px] lg:w-[500px] text-center p-1 px-2 focus:border-[#FF6202] focus:outline-none ' />
             </div>
 
         </div>

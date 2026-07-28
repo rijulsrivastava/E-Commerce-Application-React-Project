@@ -51,17 +51,17 @@ function ProductDetails() {
 
 
   return (
-    <div className='flex justify-center  mt-15'>
-      <div className='flex justify-between border bg-[#ECFDF5] w-[900px] h-[500px] p-6 gap-2'>
-        <div className='w-[40%] object-cover'>
-          <img src={product.thumbnail} loading='lazy' className=' w-[100%] h-[100%]' alt="" />
+    <div className='flex justify-center  mt-15 mb-10 px-4 lg:px-8'>
+      <div className='flex flex-col lg:flex-row justify-between border bg-[#ECFDF5] w-full max-w-6xl p-6 gap-4'>
+        <div className='w-full lg:flex-1 object-cover'>
+          <img src={product.thumbnail} loading='lazy' className=' w-[100%] h-[288px] lg:h-full object-cover' alt="" />
         </div>
-        <div className=' flex flex-col justify-between w-[60%] p-2'>
+        <div className=' flex flex-col justify-between w-full lg:w-3/5 p-2'>
           <div className='flex flex-col p-2 pt-0 gap-6'>
             <div className='flex flex-col gap-1'>
-              <div className='flex gap-2 items-center'>
-                <h2 className='text-3xl font-bold'>{product.brand || "Unkown Brand"}</h2>
-                <h3 className='text-lg self-end'>({product.category})</h3>
+              <div className='flex flex-col sm:flex-row gap-2 sm:items-center'>
+                <h2 className='text-2xl sm:text-3xl font-bold'>{product.brand || "Unkown Brand"}</h2>
+                <h3 className='text-lg sm:self-end'>({product.category})</h3>
               </div>
               <h3 className='text-lg'>{product.title}</h3>
             </div>
@@ -75,11 +75,11 @@ function ProductDetails() {
               <h2>{product.availabilityStatus}</h2>
               <h2>({product.stock} available)</h2>
             </div>
-            <p className='font-bold text-3xl'>$ {product.price}</p>
+            <p className='font-bold text-2xl sm:text-3xl'>$ {product.price}</p>
 
           </div>
-          <div className='mb-7 text-center'>
-            <button onClick={handleAddToCart} className='bg-[#3e5c63] rounded-2xl px-6 border py-1 text-white hover:text-[#FF6202] hover:bg-transparent hover:scale-105'>Add to Cart</button>
+          <div className='mb-4 lg:mb-7 text-center'>
+            <button onClick={handleAddToCart} className='bg-[#3e5c63] w-full sm:w-auto rounded-2xl px-6 border py-1 text-white hover:text-[#FF6202] hover:bg-transparent hover:scale-105'>Add to Cart</button>
           </div>
         </div>
       </div>
