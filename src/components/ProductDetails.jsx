@@ -7,16 +7,17 @@ import { addItem } from '../utils/cartSlice'
 
 function ProductDetails() {
 
-  const param = useParams()
+  const param = useParams() // useParams is used to get id for detailed view of the product
 
   const [product, setProduct] = useState(null)
   const [err, setErr] = useState('')
   const [load, setLoad] = useState(true)
 
+  // useEffect is used to fetch data again when the product id is changed
   useEffect(() => {
     async function fetch() {
       try {
-        const response = await axios.get(`https://dummyjson.com/products/${param.id}`)
+        const response = await axios.get(`https://dummyjson.com/products/${param.id}`) //to dynamically fetch data of a particular product
         // console.log(response.data)
         setProduct(response.data)
       } catch (error) {
@@ -42,10 +43,11 @@ function ProductDetails() {
     return <h2 className="text-center text-2xl mt-10">No Matching Product</h2>;
   }
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() //to send actions to redux reducers
 
+  // handleAddToCart() is used to add item to the store when user click add to cart
   function handleAddToCart() {
-    console.log('added')
+    // console.log('added')
     dispatch(addItem(product))
   }
 

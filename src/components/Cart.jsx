@@ -1,5 +1,6 @@
 import React from 'react'
 import { lazy, Suspense } from 'react'
+// lazy loding is used to load CartItem for performance optimization
 const CartItem = lazy(() => import('./CartItem'))
 import { FaArrowRightFromBracket } from "react-icons/fa6"
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,10 +9,11 @@ import { clearCart } from '../utils/cartSlice'
 
 function Cart() {
 
-  const items = useSelector((store) => store.cart.items)
+  const items = useSelector((store) => store.cart.items) //to get cart items stored in redux store
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() //to send actions to redux reducers
 
+  // handleClearCart() is used to empty cart
   function handleClearCart() {
     dispatch(clearCart())
   }
@@ -20,6 +22,7 @@ function Cart() {
 
   const navigate = useNavigate()
 
+  // handleClick is used to redirect to home
   function handleClick() {
     navigate('/')
   }
@@ -33,10 +36,12 @@ function Cart() {
             {items.map((item) => {
               return (
                 <div key={item.id} className='flex flex-col border shadow-xl border-dashed border-[#D4A373] w-full mb-4'>
+                  {/* using props data of particular cart item is passed */}
                   <CartItem item={item} />
                 </div>
               )
             })}
+            {/* suspense is used for wrapping lazy loading component */}
           </Suspense>
           <div className='flex flex-col mt-6 items-center justify-center w-full'>
             <div className='flex justify-between sm:justify-around w-full bg-[#D4E3DE] border-[#D4A373] border border-dotted font-bold sm:text-lg p-2'>
@@ -51,6 +56,7 @@ function Cart() {
             </div>
           </div>
         </div > :
+        // if cart is empty below will execute
         <div className='flex flex-col gap-2 justify-center items-center m-10'>
           <h2 className='font-bold text-2xl sm:text-3xl lg:text-4xl'>Nothing in the cart</h2>
           <p>Add items to proceed</p>

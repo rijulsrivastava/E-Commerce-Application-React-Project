@@ -4,6 +4,7 @@ import { Link, useRouteError } from 'react-router-dom'
 
 function NotFound() {
 
+  // useRouteError provides error details that occurs
   const err = useRouteError()
 
   return (
@@ -16,6 +17,7 @@ function NotFound() {
         <div className='flex flex-col justify-center items-center'>
           <h2 className='text-sm sm:text-base italic'>{err.data}</h2>
           <p className='text-sm sm:text-base mb-6'>Check the Url</p>
+          {/* below link is to go back to home page */}
           <Link to={'/'}><span className='border rounded-lg p-1 px-2 rounded-sm  hover:text-[#FF6202]'>Back to Home</span></Link>
         </div>
       </div>

@@ -4,9 +4,10 @@ import { setSearchText } from '../utils/searchSlice'
 
 function Search() {
 
-    const dispatch = useDispatch()
-    const [input, setInput] = useState('')
+    const dispatch = useDispatch() //to send actions to store reducers
+    const [input, setInput] = useState('') //state to store search query entered by user
 
+    // useEffect is used so that whenever input changes store will be updated
     useEffect(() => {
         dispatch(setSearchText(input.trim()))
     }, [input, dispatch])

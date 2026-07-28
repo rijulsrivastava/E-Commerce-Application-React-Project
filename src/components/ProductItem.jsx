@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 function ProductItem(props) {
 
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() //to send actions to redux reducers
 
+  // handleAddToCart() is used to add item to the store when user click add to cart
   function handleAddToCart() {
     // console.log('added')
     dispatch(addItem(props.product))
@@ -17,13 +18,14 @@ function ProductItem(props) {
   // console.log(props.product.thumbnail)
   return (
     <div className='flex flex-col justify-between border shadow-xl border-[#D4A373] hover:scale-[103%] bg-[#ECFDF5] rounded-2xl border-dotted pb-1 w-full max-w-[288px] h-fit'>
+      {/* when user clicks on link it will navigates to product page with particular id dynamically */}
       <Link to={`/productDetails/${props.product.id}`}>
         <div className='relative'>
           <img src={props.product.thumbnail} loading='lazy' className=' w-full h-[224px] sm:h-64 lg:h-[288px] object-cover self-center' alt="" />
           <h2 className='absolute bottom-2 flex justify-center bg-amber-50  px-2 py-1 items-center gap-1 rounded-lg font-bold text-md '>{props.product.rating} <FaStar className='text-[#038C02]' /> ({props.product.reviews.length})</h2>
         </div>
         <div className='flex flex-col p-2 gap-1'>
-          <h2 className='font-bold'>{props.product.brand || "Unkown Brand"}</h2>
+          <h2 className='font-bold'>{props.product.brand || "Unknown Brand"}</h2>
           <h3 className='text-sm sm:text-base'>{props.product.title}</h3>
           <p className='font-bold'>$ {props.product.price}</p>
         </div>

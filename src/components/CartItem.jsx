@@ -5,16 +5,19 @@ import { addItem, decrement, removeItem } from "../utils/cartSlice";
 
 function CartItem({ item }) {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() //to send actions to redux reducers
 
+  // handleRemove() will remove particular item from the cart
   function handleRemove() {
     dispatch(removeItem(item))
   }
 
+  // handlePlus() will add quantity of a particular item in the cart
   function handlePlus() {
     dispatch(addItem(item))
   }
 
+  // handlePlus() will decrease quantity of a particular item in the cart
   function handleMinus() {
     dispatch(decrement(item))
   }
@@ -23,6 +26,7 @@ function CartItem({ item }) {
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-5 items-center p-4">
       <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] shrink-0">
+        {/* image is loaded using lazy loading */}
         <img src={item.thumbnail} loading="lazy" alt={item.title} className="w-full h-full object-cover" />
       </div>
       <div className="flex flex-col sm:flex-row justify-between items-center flex-1 gap-5 w-full">
